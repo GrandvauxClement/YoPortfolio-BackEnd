@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "port": 9000,
+    "db": "mongodb://localhost/yoPortfolio"
+  },
+  "production": {
+    "port": 9000,
+    "db": "mongodb://localhost/yoPortfolio"
+  }
+}
