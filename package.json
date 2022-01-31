@@ -20,5 +20,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.8",
     "mongoose-unique-validator": "^3.0.0"
+  },
+  "devDependencies": {
+    "node-mongodb-fixtures": "^3.2.9",
+    "nodemon": "^2.0.4"
   }
 }

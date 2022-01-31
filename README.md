@@ -9,7 +9,7 @@
 First, you need to download the project in your computer and install all the dependencies:
 
 ```bash
-git clone 
+git clone https://github.com/GrandvauxClement/YoPortoflio-BackEnd.git Back-end
 cd Back-end
 npm install
 ```
