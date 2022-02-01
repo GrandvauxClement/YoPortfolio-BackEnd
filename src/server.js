@@ -1,20 +1,49 @@
-// define global constants (port, database)
-require("./config/config");
+const http = require('http');
+const app = require('./app/app');
 
-const app = require("./app/app.js");
+const normalizePort = val => {
+    const port = parseInt(val, 10);
 
-// routes used by the server
-// the client can call them through HTTP requests
+    if (isNaN(port)) {
+        return val;
+    }
+    if (port >=0){
+        return port;
+    }
+    return false;
+};
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 
+const errorHandler = error => {
+    if (error.syscall !== 'listen'){
+        throw error;
+    }
+    const address = server.address();
+    const bind = typeof address === 'string' ? 'pipe ' + address : 'port: '+ port;
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges.');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use.');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+};
 
-// default server route
-app.get("/", (req, res) => {
-    res.send("Hello World!");
+const server = http.createServer(app);
+
+server.on('error', errorHandler);
+server.on('listening', () => {
+    const address = server.address();
+    const bind = typeof address === 'string' ? 'pipe ' + address : 'port: '+ port;
+    console.log('Listening on ' + bind);
 });
 
-// server listen to port
-app.listen(process.env.port, () => {
-    console.log(`Server is listening http://localhost:${process.env.port}`);
-});
+server.listen(port);
 
 module.exports = app;
