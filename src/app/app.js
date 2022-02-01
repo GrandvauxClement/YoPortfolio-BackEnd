@@ -1,10 +1,30 @@
 // All require
 const express = require("express");
-const runMongoose = require("../mongoose");
 const cors = require("cors");
 const bodyParser = require('body-parser');
-const projectRoutes = require('../routes/project');
+const path = require('path');
+const ProjectRoutes = require('../routes/project');
+const mongoose = require('mongoose');
 
+mongoose
+    // connect mongoose to the database
+    // see more : https://mongoosejs.com/docs/connections.html
+    .connect("mongodb://localhost/yoPortfolio", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    // if it is connected
+    .then((mongooseDb) => {
+        // all executed methods log output to console
+        mongoose.set("debug", true);
+
+        console.log(`Server is connected to database !`);
+        console.log(`Server is being configured...`);
+    })
+    // if there is an error
+    .catch((err) => {
+        console.log(err);
+    })
 // Create an Express server
 const app = express();
 
@@ -13,12 +33,14 @@ const app = express();
 app.use(cors());
 // The body-parser
 app.use(bodyParser.json());
-// Définition du dossier public comme static, pour dl les fichiers dedans
-app.use("/static", express.static("public"));
+// Define all Routes of API
+app.use('/api/project', ProjectRoutes);
 
-app.use("/api/project", projectRoutes);
-runMongoose().then(() => {
-    console.log('Ready to use');
-});
+// Définition du dossier public comme static, pour dl les fichiers dedans
+app.use("/static", express.static(path.join(__dirname, 'public')));
+
+
+
+
 
 module.exports = app;

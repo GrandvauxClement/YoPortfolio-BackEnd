@@ -26,8 +26,10 @@ exports.getOneProject = (req, res, next) => {
 
 exports.getAllProject = (req, res, next) => {
     Project.find().then(
-        (projects) => {
-            res.status(200).json(projects);
+        (project) => {
+            console.log(project);
+            console.log('la');
+            res.status(200).json(project);
         }
     ).catch(
         (error) => {
