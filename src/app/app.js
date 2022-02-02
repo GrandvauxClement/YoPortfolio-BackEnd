@@ -3,7 +3,9 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const path = require('path');
+// All routes
 const ProjectRoutes = require('../routes/project');
+const MessageRoutes = require('../routes/message');
 const mongoose = require('mongoose');
 
 mongoose
@@ -35,6 +37,7 @@ app.use(cors());
 app.use(bodyParser.json());
 // Define all Routes of API
 app.use('/api/project', ProjectRoutes);
+app.use('/api/message', MessageRoutes);
 
 // Définition du dossier public comme static, pour dl les fichiers dedans
 app.use("/static", express.static(path.join(__dirname, 'public')));
