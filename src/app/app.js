@@ -39,8 +39,8 @@ app.use(bodyParser.json());
 app.use('/api/project', ProjectRoutes);
 app.use('/api/message', MessageRoutes);
 
-// Définition du dossier public comme static, pour dl les fichiers dedans
-app.use("/static", express.static(path.join(__dirname, 'public')));
+// Définition du dossier public/images comme static, pour dl les fichiers dedans
+app.use("/static", express.static(path.join(__dirname, 'public/images')));
 
 
 
