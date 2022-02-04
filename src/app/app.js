@@ -34,6 +34,7 @@ const app = express();
 // Enable CORS for everything
 // See more : https://expressjs.com/en/resources/middleware/cors.html
 app.use(cors());
+
 // The body-parser
 app.use(bodyParser.json());
 // Define all Routes of API
@@ -41,7 +42,7 @@ app.use('/api/project', ProjectRoutes);
 app.use('/api/message', MessageRoutes);
 app.use('/api/service', ServiceRoutes);
 
-// Définition du dossier public/images comme static, pour dl les fichiers dedans
-app.use("/static", express.static(path.join(__dirname, 'public')));
+// Définition du dossier public comme static, pour dl les fichiers dedans
+app.use("/public", express.static(path.join(__dirname + '\\..\\..\\public')));
 
 module.exports = app;
