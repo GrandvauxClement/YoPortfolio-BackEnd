@@ -6,6 +6,7 @@ const path = require('path');
 // All routes
 const ProjectRoutes = require('../routes/project');
 const MessageRoutes = require('../routes/message');
+const ServiceRoutes = require('../routes/service');
 const mongoose = require('mongoose');
 
 mongoose
@@ -38,12 +39,9 @@ app.use(bodyParser.json());
 // Define all Routes of API
 app.use('/api/project', ProjectRoutes);
 app.use('/api/message', MessageRoutes);
+app.use('/api/service', ServiceRoutes);
 
 // Définition du dossier public/images comme static, pour dl les fichiers dedans
-app.use("/static", express.static(path.join(__dirname, 'public/images')));
-
-
-
-
+app.use("/static", express.static(path.join(__dirname, 'public')));
 
 module.exports = app;

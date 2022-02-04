@@ -18,3 +18,6 @@ const ServiceSchema = mongoose.Schema({
         required: true
     }
 })
+
+
+module.exports = mongoose.model('Service', ServiceSchema);
