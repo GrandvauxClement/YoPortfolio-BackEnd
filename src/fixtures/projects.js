@@ -12,6 +12,7 @@ module.exports = [
         images: ['print1.jpg', 'print2.jpg', 'print3.jpg', 'print4.jpg'],
         principalImage: "print1.jpg",
         videoLink: "https://www.youtube.com/watch?v=LH5ay10RTGY",
+        workState: ['photoshop', 'instagram', 'google analytics', 'facebook', 'création charte graphique' ],
     },
     {
         title: "Identité visuel GlouGlou market",
@@ -24,6 +25,7 @@ module.exports = [
         images: ['logo1.jpg', 'logo2.jpg', 'logo3.jpg', 'logo4.jpg'],
         principalImage: "logo1.jpg",
         videoLink: "https://www.youtube.com/watch?v=LH5ay10RTGY",
+        workState: ['photoshop', 'instagram', 'google analytics', 'facebook', 'création charte graphique' ]
     },
     {
         title: "Création dépliant dartagnant",
@@ -36,6 +38,7 @@ module.exports = [
         images: ['print1.jpg', 'print2.jpg', 'print3.jpg', 'print4.jpg'],
         principalImage: "print2.jpg",
         videoLink: "https://www.youtube.com/watch?v=LH5ay10RTGY",
+        workState: ['photoshop', 'instagram', 'google analytics', 'facebook', 'création charte graphique' ]
     },
     {
         title: "Identité visuel GlouGlou market",
@@ -48,6 +51,7 @@ module.exports = [
         images: ['logo1.jpg', 'logo2.jpg', 'logo3.jpg', 'logo4.jpg'],
         principalImage: "logo2.jpg",
         videoLink: "https://www.youtube.com/watch?v=LH5ay10RTGY",
+        workState: ['photoshop', 'instagram', 'google analytics', 'facebook', 'création charte graphique' ]
     },
     {
         title: "Création dépliant dartagnant",
@@ -60,6 +64,7 @@ module.exports = [
         images: ['print1.jpg', 'print2.jpg', 'print3.jpg', 'print4.jpg'],
         principalImage: "print3.jpg",
         videoLink: "https://www.youtube.com/watch?v=LH5ay10RTGY",
+        workState: ['photoshop', 'instagram', 'google analytics', 'facebook', 'création charte graphique' ]
     },
     {
         title: "Identité visuel GlouGlou market",
@@ -72,6 +77,7 @@ module.exports = [
         images: ['logo1.jpg', 'logo2.jpg', 'logo3.jpg', 'logo4.jpg'],
         principalImage: "logo3.jpg",
         videoLink: "https://www.youtube.com/watch?v=LH5ay10RTGY",
+        workState: ['photoshop', 'instagram', 'google analytics', 'facebook', 'création charte graphique' ]
     },
     {
         title: "Création dépliant dartagnant",
@@ -84,6 +90,7 @@ module.exports = [
         images: ['print1.jpg', 'print2.jpg', 'print3.jpg', 'print4.jpg'],
         principalImage: "print4.jpg",
         videoLink: "https://www.youtube.com/watch?v=LH5ay10RTGY",
+        workState: ['photoshop', 'instagram', 'google analytics', 'facebook', 'création charte graphique' ]
     },
     {
         title: "Identité visuel GlouGlou market",
@@ -96,5 +103,6 @@ module.exports = [
         images: ['logo1.jpg', 'logo2.jpg', 'logo3.jpg', 'logo4.jpg'],
         principalImage: "logo4.jpg",
         videoLink: "https://www.youtube.com/watch?v=LH5ay10RTGY",
+        workState: ['photoshop', 'instagram', 'google analytics', 'facebook', 'création charte graphique' ]
     },
 ];
