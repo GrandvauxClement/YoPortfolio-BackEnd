@@ -7,7 +7,8 @@ module.exports = [
             " la conception de vos supports commerciaux et promotionnels (Bannière, plaquette commerciale," +
             " flyer, carte de visite…). Je vous accompagne dans la création de tous vos outils de communication" +
             " Print & Web sur différents supports.",
-        image: "creationGraphique.png"
+        image: "creationGraphique.png",
+        url: "/creation-graphique"
     },
     {
         title: "Community Management",
@@ -18,7 +19,8 @@ module.exports = [
             " ensemble une ligne éditoriale propre aux valeurs et objectifs de votre entreprise. " +
             "Ensuite, je vous guiderai dans la mise en place et l’animation de vos médias sociaux afin d’optimiser" +
             " votre communication numérique.",
-        image: "coummunityManagement.png"
+        image: "coummunityManagement.png",
+        url: "/community-management",
     },
     {
         title: "Stratégie de Communication",
@@ -27,6 +29,7 @@ module.exports = [
             "mesure. Adaptée à vos moyens humains et financiers, développons votre communication pour saisir les" +
             " opportunités de votre marché. J’offre à mes clients un accompagnement personnalisé pour les " +
             "conseiller au mieux dans la réalisation de leur projet web.",
-        image: "stratComm.png"
+        image: "stratComm.png",
+        url: "/strategie-communication"
     }
 ]
