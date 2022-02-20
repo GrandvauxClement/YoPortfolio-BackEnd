@@ -5,13 +5,9 @@ const messageSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    firstName:{
+    name:{
       type: String,
       required: true,
-    },
-    lastName:{
-        type: String,
-        required: true,
     },
     email:{
         type: String,
