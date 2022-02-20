@@ -1,9 +1,10 @@
 const Message = require('../models/message');
 
 exports.createMessage = (req, res, next) => {
-    const messageObject = JSON.parse(req.body.project);
+    console.log(req.body.message);
+ //   const messageObject = JSON.parse(req.body.message);
     const message = new Message({
-        ...messageObject
+        ...req.body.message
     });
     message.save()
         .then(() => res.status(201).json({message: 'Message créé correctement ! :)'}))
