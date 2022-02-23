@@ -8,7 +8,7 @@ module.exports = [
             " flyer, carte de visite…). Je vous accompagne dans la création de tous vos outils de communication" +
             " Print & Web sur différents supports.",
         image: "creationGraphique.png",
-        url: "/creation-graphique"
+        url: "/creation-graphique#main"
     },
     {
         title: "Community Management",
@@ -20,7 +20,7 @@ module.exports = [
             "Ensuite, je vous guiderai dans la mise en place et l’animation de vos médias sociaux afin d’optimiser" +
             " votre communication numérique.",
         image: "coummunityManagement.png",
-        url: "/community-management",
+        url: "/community-management#main",
     },
     {
         title: "Stratégie de Communication",
@@ -30,6 +30,6 @@ module.exports = [
             " opportunités de votre marché. J’offre à mes clients un accompagnement personnalisé pour les " +
             "conseiller au mieux dans la réalisation de leur projet web.",
         image: "stratComm.png",
-        url: "/strategie-communication"
+        url: "/strategie-communication#main"
     }
 ]
