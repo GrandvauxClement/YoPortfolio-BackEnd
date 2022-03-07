@@ -2,6 +2,7 @@
 const ProjectModel = require('../models/project');
 const MessageModel = require('../models/message');
 const ServiceModel = require('../models/service');
+const uploadFeature = require('@adminjs/upload');
 
 function ReturnAdminJSConfig(mongooseDb) {
     return {
@@ -9,7 +10,14 @@ function ReturnAdminJSConfig(mongooseDb) {
             {
                 resource: ProjectModel,
                 options: {
-                    properties: {
+                 //   listProperties: ['title', 'type', 'createdAt', 'principalImage.path'],
+                    /*  editProperties: ['title', 'description', 'objectif', 'workState',
+                          'type', 'images','videoLink'],
+                       showProperties: ['title', 'description', 'objectif', 'workState',
+                          'type', 'principalImage','images' ,'videoLink', 'createdAt'],
+                      filterProperties: ['title', 'objectif', 'workState',
+                          'type', 'createdAt'],*/
+                  /*  properties: {
                         _id:{
                             isVisible: { list: false, filter: false, show: false, edit: false },
                         },
@@ -30,18 +38,46 @@ function ReturnAdminJSConfig(mongooseDb) {
                         },
                         images: {
                             isVisible: { list: false, filter: false, show: true, edit: true },
+                        },*/
+                    properties: {
+                        /*mimeType:{
+                            isVisible: { list: false, filter: false, show: false, edit: false }
+                        },*/
+                        images:{
+                            isVisible: { list: false, filter: false, show: true, edit: true }
                         },
-                        principalImage: {
-                            isVisible: { list: true, filter: false, show: true, edit: true },
-                        },
-                        videoLink: {
-                            isVisible: { list: false, filter: false, show: true, edit: false },
-                        },
-                        createdAt: {
-                            isVisible: { list: true, filter: true, show: true, edit: false },
-                        }
                     }
                 },
+                features: [
+                   /* uploadFeature({
+                        provider: {local: { bucket: 'public/images/projets'}},
+                        properties: {
+                            file: 'Image Principal',
+                         //   bucket: 'principalImage.bucket',
+                            key: 'principalImage',
+                            mimeType: 'mimeType'
+                        },
+                        validation: {
+                            mimeTypes: ['image/jpeg', 'image/png']
+                        }
+                    }),*/
+                    uploadFeature({
+                        provider: {local: { bucket: 'public/images/projets'}},
+                        multiple: true,
+                        properties: {
+                            file: 'images',
+                            filePath: 'images.file',
+                            filesToDelete: 'images.filesToDelete',
+                            key: 'images.key',
+                            mimeType: 'images.mimeType',
+                            size: 'images.size',
+                            bucket: 'images.bucket'
+                        },
+                        validation: {
+                            mimeTypes: ['image/jpeg', 'image/png']
+                        }
+                    })
+                ]
             },
             {
                 resource: MessageModel,

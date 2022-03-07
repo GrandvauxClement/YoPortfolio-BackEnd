@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 
+const UplodedFile = mongoose.Schema({
+    path: String,
+    type: String,
+})
 const projectSchema = mongoose.Schema({
     title:{
         type: String,
@@ -14,7 +18,7 @@ const projectSchema = mongoose.Schema({
         required: false
     },
     workState:{
-        type: Array,
+        type: [String],
         required: false
     },
     type:{
@@ -23,13 +27,27 @@ const projectSchema = mongoose.Schema({
         required: true
     },
     images:{
-        type: Array,
-        required: true
+      key: [String],
+      mimeType: [String],
+      bucket: [String],
+      size: [String],
     },
-    principalImage:{
+   /* principalImage:{
         type: String,
-        required: true
-    },
+        required: false
+       /!* mime: {
+            type: String,
+            required: false
+        },
+        s3Key: {
+            type: String,
+            required: false
+        },
+        bucket: {
+            type: String,
+            required: false
+        }*!/
+    },*/
     videoLink:{
         type: Array,
         required: false
