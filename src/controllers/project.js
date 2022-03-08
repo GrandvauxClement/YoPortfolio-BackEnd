@@ -24,6 +24,7 @@ exports.getOneProject = (req, res, next) => {
 };
 
 exports.getAllProject = (req, res, next) => {
+
     Project.find().then(
         (project) => {
             res.status(200).json(project);
@@ -34,3 +35,18 @@ exports.getAllProject = (req, res, next) => {
         }
     );
 };
+
+exports.deleteProject = (req, res, next) => {
+    console.log(req.params);
+    Project.deleteOne({
+        _id: req.params.id
+    }).then(
+        (project) => {
+            res.status(200).json(project);
+        }
+    ).catch(
+        (error) => {
+            res.status(500).json({error});
+        }
+    );
+}
