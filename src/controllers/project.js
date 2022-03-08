@@ -1,9 +1,8 @@
 const Project = require('../models/project');
 
 exports.createProject = (req, res, next) => {
-    const projectObject = JSON.parse(req.body.project);
     const project = new Project({
-        ...projectObject
+        ...req.body
     });
     project.save()
         .then(() => res.status(201).json({message: 'Project créé correctement ! :)'}))
