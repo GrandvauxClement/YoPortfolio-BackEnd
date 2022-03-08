@@ -32,7 +32,7 @@ mongoose
 // The body-parser
         app.use(bodyParser.json());
 // Define all Routes of API
-        app.listen(9000, () => console.log('App is running'))
+     //   app.listen(9000, () => console.log('App is running'))
 
         app.use('/api/project', ProjectRoutes);
         app.use('/api/message', MessageRoutes);
