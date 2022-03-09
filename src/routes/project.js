@@ -8,5 +8,5 @@ router.post('/', projectController.createProject);
 router.get('/:id', projectController.getOneProject);
 router.post('/multiple-upload', uploadController.multipleUpload);
 router.delete('/:id', projectController.deleteProject)
-
+router.delete('/removeImage/:name', projectController.removeImage);
 module.exports = router;

@@ -1,4 +1,5 @@
 const Project = require('../models/project');
+const fs = require("fs");
 
 exports.createProject = (req, res, next) => {
     const project = new Project({
@@ -37,7 +38,6 @@ exports.getAllProject = (req, res, next) => {
 };
 
 exports.deleteProject = (req, res, next) => {
-    console.log(req.params);
     Project.deleteOne({
         _id: req.params.id
     }).then(
@@ -49,4 +49,13 @@ exports.deleteProject = (req, res, next) => {
             res.status(500).json({error});
         }
     );
+}
+
+exports.removeImage = (req, res, next) => {
+    try {
+        fs.unlinkSync(`${__dirname}/../../public/images/projets/${req.params.name}`);
+        res.status(200).json({message: 'delete done'})
+    }catch (err){
+        res.status(500).json({err});
+    }
 }
