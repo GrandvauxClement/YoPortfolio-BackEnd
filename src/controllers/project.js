@@ -51,6 +51,18 @@ exports.deleteProject = (req, res, next) => {
     );
 }
 
+exports.updateOne = (req, res, next) => {
+    Project.updateOne(
+        {_id: req.params.id},
+        {...req.body})
+        .then((project) => {
+            res.status(200).json(project);
+        })
+        .catch((err) => {
+            res.status(500).json({err});
+        });
+}
+
 exports.removeImage = (req, res, next) => {
     try {
         fs.unlinkSync(`${__dirname}/../../public/images/projets/${req.params.name}`);
