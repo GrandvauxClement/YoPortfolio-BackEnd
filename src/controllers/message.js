@@ -36,3 +36,17 @@ exports.getAllMessage = (req, res, next) => {
         }
     );
 };
+
+exports.deleteProject = (req, res, next) => {
+    Message.deleteOne({
+        _id: req.params.id
+    }).then(
+        (message) => {
+            res.status(200).json(message);
+        }
+    ).catch(
+        (error) => {
+            res.status(500).json({error});
+        }
+    );
+}
