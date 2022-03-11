@@ -8,6 +8,7 @@ const path = require('path');
 const ProjectRoutes = require('../routes/project');
 const MessageRoutes = require('../routes/message');
 const ServiceRoutes = require('../routes/service');
+const AuthRoute = require('../routes/user');
 const mongoose = require('mongoose');
 
 const app = express();
@@ -23,7 +24,7 @@ mongoose
         // all executed methods log output to console
         mongoose.set("debug", true);
 
-        console.log(`Server is connected to database !`);
+        console.log(`Server is connected to database ! ${mongooseDb}`);
         console.log(`Server is being configured...`);
         // Enable CORS for everything
 // See more : https://expressjs.com/en/resources/middleware/cors.html
@@ -33,7 +34,8 @@ mongoose
         app.use(bodyParser.json());
 // Define all Routes of API
      //   app.listen(9000, () => console.log('App is running'))
-
+        app.get
+        app.use('/api/login', AuthRoute);
         app.use('/api/project', ProjectRoutes);
         app.use('/api/message', MessageRoutes);
         app.use('/api/service', ServiceRoutes);
