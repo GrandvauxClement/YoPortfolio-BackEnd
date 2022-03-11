@@ -1,6 +1,7 @@
 const Project = require('../models/project');
 const fs = require("fs");
 
+
 exports.createProject = (req, res, next) => {
     const project = new Project({
         ...req.body
@@ -38,11 +39,28 @@ exports.getAllProject = (req, res, next) => {
 };
 
 exports.deleteProject = (req, res, next) => {
-    Project.deleteOne({
+    Project.findOne({
         _id: req.params.id
     }).then(
-        (project) => {
-            res.status(200).json(project);
+        (project)=> {
+            project.images.map((fileName) => {
+                try {
+                    fs.unlinkSync(`${__dirname}/../../public/images/projets/${fileName}`);
+                }catch (err){
+                    res.status(500).json({err});
+                }
+            })
+            Project.deleteOne({
+                _id: req.params.id
+            }).then(
+                (project) => {
+                    res.status(200).json(project);
+                }
+            ).catch(
+                (error) => {
+                    res.status(500).json({error});
+                }
+            );
         }
     ).catch(
         (error) => {
