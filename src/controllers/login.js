@@ -2,6 +2,13 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+exports.checkValidityToken = (req, res, next) => {
+    return res.json({
+        isLoggedIn: true,
+        message: "Authenticate good"
+    })
+}
+
 exports.login = (req, res, next) => {
    const userLoggingIn = req.body;
 
