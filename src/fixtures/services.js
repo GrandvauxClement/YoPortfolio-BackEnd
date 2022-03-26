@@ -1,5 +1,13 @@
 module.exports = [
     {
+        title: "Rédaction article web",
+        subTitle: "Développez votre visibilité sur le web!",
+        description: "Web rédacteur, article web, blogging… Une discipline souvent mise de côté, pourtant elle a " +
+            "apport une plus-value primordiales pour votre entreprise",
+        image: "creationGraphique.png",
+        url: "/creation-graphique#main"
+    },
+    {
         title: "Création Graphique",
         subTitle: "Développez votre image!",
         description: "Tout d’abord, construisons ensemble l’identité visuelle de votre entreprise, telle que" +
