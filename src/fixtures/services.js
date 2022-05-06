@@ -9,12 +9,10 @@ module.exports = [
     },
     {
         title: "Création Graphique",
-        subTitle: "Développez votre image!",
-        description: "Tout d’abord, construisons ensemble l’identité visuelle de votre entreprise, telle que" +
-            " vous l’imaginez. De l’élaboration de votre charte graphique et de votre logo, en passant par" +
-            " la conception de vos supports commerciaux et promotionnels (Bannière, plaquette commerciale," +
-            " flyer, carte de visite…). Je vous accompagne dans la création de tous vos outils de communication" +
-            " Print & Web sur différents supports.",
+        subTitle: " Pour créer une image de marque pertinente et qui vous ressemble!",
+        description: "Créer une image de marque : un logo, une carte graphique, une identité. Le but étant de " +
+            "créer quelque chose qui vous ressemble et qui a du sens par rapport à votre secteur d’activité et ce " +
+            "que vous proposez.",
         image: "creationGraphique.png",
         url: "/creation-graphique#main"
     },
@@ -33,6 +31,16 @@ module.exports = [
     {
         title: "Stratégie de Communication",
         subTitle: "Démarquez-vous de vos concurrents!",
+        description: "Après une étude de marché détaillée, élaborons ensemble votre plan de communication sur " +
+            "mesure. Adaptée à vos moyens humains et financiers, développons votre communication pour saisir les" +
+            " opportunités de votre marché. J’offre à mes clients un accompagnement personnalisé pour les " +
+            "conseiller au mieux dans la réalisation de leur projet web.",
+        image: "stratComm.png",
+        url: "/strategie-communication#main"
+    },
+    {
+        title: "Création de site web",
+        subTitle: "Développer votre entreprise sur le web !",
         description: "Après une étude de marché détaillée, élaborons ensemble votre plan de communication sur " +
             "mesure. Adaptée à vos moyens humains et financiers, développons votre communication pour saisir les" +
             " opportunités de votre marché. J’offre à mes clients un accompagnement personnalisé pour les " +

@@ -38,6 +38,20 @@ exports.getAllProject = (req, res, next) => {
     );
 };
 
+exports.getProjectByKind = (req, res, next) => {
+    const kind = req.body.kind;
+
+    Project.find({type: kind}).then(
+        (project) => {
+            res.status(200).json(project);
+        }
+    ).catch(
+        (error) => {
+            res.status(500).json({error});
+        }
+    );
+};
+
 exports.deleteProject = (req, res, next) => {
     Project.findOne({
         _id: req.params.id

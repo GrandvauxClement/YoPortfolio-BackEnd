@@ -5,6 +5,7 @@ const uploadController = require("../controllers/uploadController");
 const verifyJwt = require("../middleware/verifyJWT");
 
 router.get('/', projectController.getAllProject);
+router.post('/byKind', projectController.getProjectByKind);
 router.post('/', verifyJwt, projectController.createProject);
 router.post('/multiple-upload', verifyJwt, uploadController.multipleUpload);
 router.post('/:id', verifyJwt, projectController.updateOne);
