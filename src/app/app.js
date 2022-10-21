@@ -13,9 +13,9 @@ const mongoose = require('mongoose');
 
 const app = express();
 mongoose
-    // connect mongoose to the database
-    // see more : https://mongoosejs.com/docs/connections.html
-    .connect("mongodb://localhost/yoPortfolio", {
+    // connect mongoose to the database mongodb+srv://admin:3TmfTX1cK7Y6rCz3@cluster0.n5wob.mongodb.net/test
+    // see more : https://mongoosejs.com/docs/connections.html mongodb://localhost/yoPortfolio
+    .connect("mongodb+srv://admin:3TmfTX1cK7Y6rCz3@cluster0.n5wob.mongodb.net/yoPortfolio", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
