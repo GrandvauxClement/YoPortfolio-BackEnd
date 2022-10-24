@@ -34,7 +34,9 @@ mongoose
         app.use(bodyParser.json());
 // Define all Routes of API
      //   app.listen(9000, () => console.log('App is running'))
-        app.get
+        app.get("/", (req, res) => {
+            res.send("Hello World!");
+        });
         app.use('/api/login', AuthRoute);
         app.use('/api/project', ProjectRoutes);
         app.use('/api/message', MessageRoutes);
