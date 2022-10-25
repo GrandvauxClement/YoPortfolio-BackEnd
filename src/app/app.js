@@ -43,7 +43,7 @@ mongoose
         app.use('/api/service', ServiceRoutes);
 
 // Définition du dossier public comme static, pour dl les fichiers dedans
-        app.use("/public", express.static(path.join(__dirname + '\\..\\..\\public')));
+        app.use("/public", express.static('public'));
 
     })
     // if there is an error
