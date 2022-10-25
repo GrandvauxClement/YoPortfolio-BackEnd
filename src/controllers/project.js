@@ -61,7 +61,8 @@ exports.deleteProject = (req, res, next) => {
                 try {
                     fs.unlinkSync(`${__dirname}/../../public/images/projets/${fileName}`);
                 }catch (err){
-                    res.status(500).json({err});
+                   /* res.status(500).json({err});*/
+                    console.log("Delete image don t find", fileName)
                 }
             })
             Project.deleteOne({
