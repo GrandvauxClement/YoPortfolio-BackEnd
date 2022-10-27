@@ -103,15 +103,19 @@ exports.updateOne = (req, res, next) => {
 
     if (project.description) project.description = JSON.parse(project.description);
     if (project.tag) project.tag = JSON.parse(project.tag);
+    console.log("Mon project received", project);
+    if (typeof project.images === "undefined"){
+        project.images = [];
+    }
+    console.log("Mon images project", project.images);
 
-    console.log("Mon project get : ", project);
-    console.log("Mes files : ", req.files)
+
     Project
         .findOne({_id: idProject})
         .exec()
         .then((data) => {
             if (data){
-                console.log(" j'ai get mon project  ", project);
+
                 if (data.images.length !== project.images.length) {
                     data.images.forEach((img) => {
                         if (!project.images.includes(img)) {
