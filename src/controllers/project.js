@@ -3,9 +3,21 @@ const fs = require("fs");
 
 
 exports.createProject = (req, res, next) => {
+
     const project = new Project({
-        ...req.body
+        ...req.body,
+        description: JSON.parse(req.body.description),
+        tag: JSON.parse(req.body.tag),
+        images: []
     });
+
+    if (req.files) {
+        console.log("Je passe là ! :) ");
+        req.files.forEach((file) => {
+            project.images.push(file.filename);
+        });
+    }
+
     project.save()
         .then(() => res.status(201).json({message: 'Project créé correctement ! :)'}))
         .catch(error => res.status(400).json({error}));
@@ -85,22 +97,58 @@ exports.deleteProject = (req, res, next) => {
 }
 
 exports.updateOne = (req, res, next) => {
-    Project.updateOne(
-        {_id: req.params.id},
-        {...req.body})
-        .then((project) => {
-            res.status(200).json(project);
+
+    const project = req.body;
+    const idProject = req.params.id;
+
+    if (project.description) project.description = JSON.parse(project.description);
+    if (project.tag) project.tag = JSON.parse(project.tag);
+
+    console.log("Mon project get : ", project);
+    console.log("Mes files : ", req.files)
+    Project
+        .findOne({_id: idProject})
+        .exec()
+        .then((data) => {
+            if (data){
+                console.log(" j'ai get mon project  ", project);
+                if (data.images.length !== project.images.length) {
+                    data.images.forEach((img) => {
+                        if (!project.images.includes(img)) {
+                            fs.unlink(`${__dirname}/../../public/images/projets/${img}`, (err) => {
+                                if (err) console.log("file does not exist - do nothing");
+                            });
+                        }
+                    })
+                }
+
+                if (req.files) {
+                    console.log("Je passe là ! :) ");
+                    req.files.forEach((file) => {
+                        project.images.push(file.filename);
+                    });
+                }
+
+                Project.updateOne({_id: req.params.id}, project)
+                    .then((project) => {
+                        res.status(200).json(project);
+                    })
+                    .catch((err) => {
+                        res.status(500).json({err});
+                    });
+            }
         })
-        .catch((err) => {
-            res.status(500).json({err});
-        });
+
+
 }
 
 exports.removeImage = (req, res, next) => {
     try {
         fs.unlinkSync(`${__dirname}/../../public/images/projets/${req.params.name}`);
-        res.status(200).json({message: 'delete done'})
+
     }catch (err){
-        res.status(500).json({err});
+      //  res.status(500).json({err});
+        console.log("")
     }
+    res.status(200).json({message: 'delete done'})
 }
