@@ -3,12 +3,31 @@ const projectController = require('../controllers/project');
 const router = express.Router();
 const uploadController = require("../controllers/uploadController");
 const verifyJwt = require("../middleware/verifyJWT");
+const multer = require("../middleware/upload-middleware");
 
 router.get('/', projectController.getAllProject);
 router.post('/byKind', projectController.getProjectByKind);
-router.post('/', verifyJwt, projectController.createProject);
-router.post('/multiple-upload', verifyJwt, uploadController.multipleUpload);
-router.post('/:id', verifyJwt, projectController.updateOne);
+router.post(
+    '/',
+    verifyJwt,
+    multer.array('images', 8),
+    projectController.createProject
+);
+
+/*router.post(
+    '/multiple-upload',
+    verifyJwt,
+    multer.array('multipleImages', 8),
+    uploadController.multipleUpload
+);*/
+
+router.post(
+    '/:id',
+    verifyJwt,
+    multer.array('images', 8),
+    projectController.updateOne
+);
+
 router.get('/:id', projectController.getOneProject);
 router.delete('/:id', verifyJwt, projectController.deleteProject)
 router.delete('/removeImage/:name', verifyJwt, projectController.removeImage);

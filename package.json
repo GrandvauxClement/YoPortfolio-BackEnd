@@ -20,7 +20,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.8",
     "mongoose-unique-validator": "^3.0.0",
-    "multer": "^1.4.4"
+    "multer": "^1.4.4",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "node-mongodb-fixtures": "^3.2.9",
