@@ -9,7 +9,7 @@ let storage = multer.diskStorage({
     },
     filename: (req, file, callback) => {
 
-        let filename = `${Date.now()}-bezkoder-${uuidv4()}`;
+        let filename = `${uuidv4()}`;
         if (file.mimetype == "image/jpeg") {
             filename += ".jpg"
         } else if(file.mimetype == "image/png"){

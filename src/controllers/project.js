@@ -1,5 +1,33 @@
 const Project = require('../models/project');
 const fs = require("fs");
+const aws = require("aws-sdk");
+
+const s3 = new aws.S3({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+});
+
+const uploadFile = (fileName) => {
+
+    // Read content from the file
+    const fileContent = fs.readFileSync(`${__dirname}/../../public/images/projets/${fileName.filename}`);
+
+    // Setting up S3 upload parameters
+    const params = {
+        Bucket: process.env.S3_BUCKET,
+        Key: fileName.filename, // File name you want to save as in S3
+        Body: fileContent,
+        ContentType: fileName.mimeType
+    };
+
+    // Uploading files to the bucket
+    s3.upload(params, function(err, data) {
+        if (err) {
+            throw err;
+        }
+        console.log(`File uploaded successfully. ${data.Location}`);
+    });
+};
 
 
 exports.createProject = (req, res, next) => {
@@ -12,15 +40,22 @@ exports.createProject = (req, res, next) => {
     });
 
     if (req.files) {
-        console.log("Je passe là ! :) ");
+
         req.files.forEach((file) => {
             project.images.push(file.filename);
+            uploadFile(file);
         });
     }
 
     project.save()
-        .then(() => res.status(201).json({message: 'Project créé correctement ! :)'}))
-        .catch(error => res.status(400).json({error}));
+        .then(() =>
+            res
+                .status(201)
+                .json({message: 'Project créé correctement ! :)'})
+        )
+        .catch(error =>
+            res.status(400).json({error})
+        );
 };
 
 exports.getOneProject = (req, res, next) => {
@@ -39,8 +74,10 @@ exports.getOneProject = (req, res, next) => {
 
 exports.getAllProject = (req, res, next) => {
 
-    Project.find().then(
-        (project) => {
+    Project
+        .find()
+        .sort({createdAt: -1})
+        .then((project) => {
             res.status(200).json(project);
         }
     ).catch(
@@ -53,7 +90,10 @@ exports.getAllProject = (req, res, next) => {
 exports.getProjectByKind = (req, res, next) => {
     const kind = req.body.kind;
 
-    Project.find({type: kind}).then(
+    Project
+        .find({type: kind})
+        .sort({createdAt: -1})
+        .then(
         (project) => {
             res.status(200).json(project);
         }
@@ -65,6 +105,7 @@ exports.getProjectByKind = (req, res, next) => {
 };
 
 exports.deleteProject = (req, res, next) => {
+    //TODO WHEN PROJECT DELETE go delete on amazon storage
     Project.findOne({
         _id: req.params.id
     }).then(
@@ -103,12 +144,10 @@ exports.updateOne = (req, res, next) => {
 
     if (project.description) project.description = JSON.parse(project.description);
     if (project.tag) project.tag = JSON.parse(project.tag);
-    console.log("Mon project received", project);
+
     if (typeof project.images === "undefined"){
         project.images = [];
     }
-    console.log("Mon images project", project.images);
-
 
     Project
         .findOne({_id: idProject})
@@ -127,9 +166,9 @@ exports.updateOne = (req, res, next) => {
                 }
 
                 if (req.files) {
-                    console.log("Je passe là ! :) ");
                     req.files.forEach((file) => {
                         project.images.push(file.filename);
+                        uploadFile(file);
                     });
                 }
 
