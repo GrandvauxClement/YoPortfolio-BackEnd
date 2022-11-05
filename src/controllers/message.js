@@ -1,14 +1,22 @@
 const Message = require('../models/message');
 
 exports.createMessage = (req, res, next) => {
-    console.log(req.body.message);
+
  //   const messageObject = JSON.parse(req.body.message);
     const message = new Message({
         ...req.body.message
     });
     message.save()
-        .then(() => res.status(201).json({message: 'Message créé correctement ! :)'}))
-        .catch(error => res.status(400).json({error}));
+        .then(() =>
+            res
+                .status(201)
+                .json({message: 'Message envoyée avec succès, je vous réponds dans les plus brefs délais! '})
+        )
+        .catch(error =>
+            res
+                .status(400)
+                .json({error})
+        );
 };
 
 exports.getOneMessage = (req, res, next) => {
