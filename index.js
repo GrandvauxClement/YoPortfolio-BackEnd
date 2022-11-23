@@ -27,7 +27,7 @@ mongoose
         console.log(`Server is being configured...`);
         // Enable CORS for everything
 // See more : https://expressjs.com/en/resources/middleware/cors.html
-        app.use(cors());
+      //  app.use(cors());
 
 // The body-parser
         app.use(bodyParser.json());
