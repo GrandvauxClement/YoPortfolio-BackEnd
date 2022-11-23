@@ -34,7 +34,21 @@ mongoose
 // Define all Routes of API
      //   app.listen(9000, () => console.log('App is running'))
         app.get("/", (req, res) => {
-            res.send("Hello World!");
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+            res.setHeader('Access-Control-Allow-Credentials', true);
+            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, OPTIONS, DELETE');
+
+//---- other code
+            //Preflight CORS handler
+            if(req.method === 'OPTIONS') {
+                return res.status(200).json(({
+                    body: "OK"
+                }))
+            }else {
+                res.send("Hello World!");
+            }
+
         });
         app.use('/api/login', AuthRoute);
         app.use('/api/project', ProjectRoutes);
