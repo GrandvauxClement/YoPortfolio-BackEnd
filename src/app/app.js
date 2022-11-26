@@ -34,7 +34,7 @@ mongoose
 // Define all Routes of API
      //   app.listen(9000, () => console.log('App is running'))
         app.get("/", (req, res) => {
-            res.setHeader('Access-Control-Allow-Origin', '*');
+            /*res.setHeader('Access-Control-Allow-Origin', '*');
             res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
             res.setHeader('Access-Control-Allow-Credentials', 'true');
             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, OPTIONS, DELETE');
@@ -48,9 +48,8 @@ mongoose
             }else {
                 return res.status(200).json(({
                     body: "OK"
-                }))
-               // res.send("Hello World!");
-            }
+                }))*/
+                res.send("Hello World!");
 
         });
         app.use('/api/login', AuthRoute);
