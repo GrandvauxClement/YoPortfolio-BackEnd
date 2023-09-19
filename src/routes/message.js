@@ -3,9 +3,11 @@ const messageController = require('../controllers/message');
 const router = express.Router();
 const verifyJwt = require("../middleware/verifyJWT");
 
-router.get('/', verifyJwt, messageController.getAllMessage);
-router.post('/', messageController.createMessage);
-router.get('/:id', verifyJwt, messageController.getOneMessage);
-router.delete('/:id',verifyJwt, messageController.deleteProject);
+const handler = require("../api/handler")
+
+router.get('/', handler, verifyJwt, messageController.getAllMessage);
+router.post('/', handler, messageController.createMessage);
+router.get('/:id', handler, verifyJwt, messageController.getOneMessage);
+router.delete('/:id', handler, verifyJwt, messageController.deleteProject);
 
 module.exports = router;

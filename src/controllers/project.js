@@ -1,7 +1,6 @@
 const Project = require('../models/project');
 const fs = require("fs");
 const aws = require("aws-sdk");
-require("dotenv").config();
 
 const s3 = new aws.S3({
     accessKeyId: process.env.YO_AWS_ACCESS_KEY_ID,
