@@ -1,6 +1,6 @@
 const Project = require('../models/project');
 const fs = require("fs");
-import { PutObjectCommand, CreateBucketCommand, S3Client } from "@aws-sdk/client-s3";
+const { PutObjectCommand, CreateBucketCommand, S3Client } =  require("@aws-sdk/client-s3");
 
 const s3 = new S3Client({
     region: "",
