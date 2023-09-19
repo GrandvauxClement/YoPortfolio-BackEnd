@@ -1,6 +1,7 @@
 const Project = require('../models/project');
 const fs = require("fs");
 const aws = require("aws-sdk");
+require("dotenv").config();
 
 const s3 = new aws.S3({
     accessKeyId: process.env.YO_AWS_ACCESS_KEY_ID,
@@ -19,7 +20,7 @@ const uploadFile = (fileName) => {
         Body: fileContent,
         ContentType: fileName.mimeType
     };
-
+    console.log("Params AWS BUcket", params)
     // Uploading files to the bucket
     s3.upload(params, function(err, data) {
         if (err) {

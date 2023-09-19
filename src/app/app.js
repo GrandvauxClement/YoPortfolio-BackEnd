@@ -10,7 +10,7 @@ const MessageRoutes = require('../routes/message');
 const ServiceRoutes = require('../routes/service');
 const AuthRoute = require('../routes/user');
 const mongoose = require('mongoose');
- require("dotenv").config();
+require("dotenv").config();
 const app = express();
 mongoose
     // connect mongoose to the database mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.n5wob.mongodb.net/{NAME_DB}   `mongodb://localhost/yoPortfolio`
