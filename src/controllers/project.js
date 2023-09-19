@@ -1,6 +1,7 @@
 const Project = require('../models/project');
 const fs = require("fs");
 const { PutObjectCommand, CreateBucketCommand, S3Client } =  require("@aws-sdk/client-s3");
+require("dotenv").config();
 
 const s3 = new S3Client({
     region: "eu-west-3",
@@ -11,7 +12,7 @@ const s3 = new S3Client({
 })
 
 const uploadFile = async (fileName) => {
-
+    console.log(process.env.YO_AWS_ACCESS_KEY_ID)
     // Read content from the file
     const fileContent = fs.readFileSync(`public/images/projets/${fileName.filename}`);
 
