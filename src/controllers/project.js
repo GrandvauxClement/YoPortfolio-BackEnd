@@ -3,7 +3,7 @@ const fs = require("fs");
 const { PutObjectCommand, CreateBucketCommand, S3Client } =  require("@aws-sdk/client-s3");
 
 const s3 = new S3Client({
-    region: "",
+    region: "eu-west-3",
     accessKeyId: process.env.YO_AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.YO_AWS_SECRET_ACCESS_KEY
 });
