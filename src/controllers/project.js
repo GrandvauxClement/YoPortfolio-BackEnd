@@ -1,13 +1,14 @@
 const Project = require('../models/project');
 const fs = require("fs");
-const aws = require("aws-sdk");
+import { PutObjectCommand, CreateBucketCommand, S3Client } from "@aws-sdk/client-s3";
 
-const s3 = new aws.S3({
+const s3 = new S3Client({
+    region: "",
     accessKeyId: process.env.YO_AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.YO_AWS_SECRET_ACCESS_KEY
 });
 
-const uploadFile = (fileName) => {
+const uploadFile = async (fileName) => {
 
     // Read content from the file
     const fileContent = fs.readFileSync(`public/images/projets/${fileName.filename}`);
@@ -19,14 +20,26 @@ const uploadFile = (fileName) => {
         Body: fileContent,
         ContentType: fileName.mimeType
     };
-    console.log("Params AWS BUcket", params)
     // Uploading files to the bucket
-    s3.upload(params, function(err, data) {
+    try {
+        s3.send(new PutObjectCommand(params))
+        console.log(
+            "Successfully created " +
+            params.Key +
+            " and uploaded it to " +
+            params.Bucket +
+            "/" +
+            params.Key
+        );
+    } catch (e) {
+        console.log("Error", err);
+    }
+    /*s3.upload(params, function(err, data) {
         if (err) {
             throw err;
         }
         console.log(`File uploaded successfully. ${data.Location}`);
-    });
+    });*/
 };
 
 
