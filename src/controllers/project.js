@@ -12,7 +12,6 @@ const s3 = new S3Client({
 })
 
 const uploadFile = async (fileName) => {
-    console.log(process.env.YO_AWS_ACCESS_KEY_ID)
     // Read content from the file
     const fileContent = fs.readFileSync(`public/images/projets/${fileName.filename}`);
 
@@ -37,14 +36,7 @@ const uploadFile = async (fileName) => {
     } catch (e) {
         console.log("Error", err);
     }
-    /*s3.upload(params, function(err, data) {
-        if (err) {
-            throw err;
-        }
-        console.log(`File uploaded successfully. ${data.Location}`);
-    });*/
 };
-
 
 exports.createProject = (req, res, next) => {
 
