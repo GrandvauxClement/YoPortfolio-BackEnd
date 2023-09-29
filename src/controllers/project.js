@@ -156,6 +156,7 @@ exports.updateOne = (req, res, next) => {
     if (typeof project.images === "undefined"){
         project.images = [];
     }
+    console.log("Mes images received --> ", project.images)
 
     Project
         .findOne({_id: idProject})
