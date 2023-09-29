@@ -49,9 +49,9 @@ exports.createProject = (req, res, next) => {
 
     if (req.files) {
 
-        req.files.forEach((file) => {
+        req.files.forEach(async (file) => {
             project.images.push(file.filename);
-            uploadFile(file);
+            await uploadFile(file);
         });
     }
 
