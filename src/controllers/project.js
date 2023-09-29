@@ -172,7 +172,7 @@ exports.updateOne = (req, res, next) => {
                         }
                     })
                 }
-                console.log(projet)
+                console.log(project)
                 if (req.files) {
                     await req.files.forEach(async (file) => {
                         console.log("Super test dans mon for qui plante ", project);
