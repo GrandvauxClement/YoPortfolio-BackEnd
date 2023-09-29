@@ -160,8 +160,8 @@ exports.updateOne = (req, res, next) => {
     Project
         .findOne({_id: idProject})
         .exec()
-        .then((data) => {
-            if (data){
+        .then(async (data) => {
+            if (data) {
 
                 if (data.images.length !== project.images.length) {
                     data.images.forEach((img) => {
@@ -174,7 +174,7 @@ exports.updateOne = (req, res, next) => {
                 }
 
                 if (req.files) {
-                    req.files.forEach(async (file) => {
+                    await req.files.forEach(async (file) => {
                         project.images.push(file.filename);
                         await uploadFile(file);
                     });
