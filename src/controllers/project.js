@@ -172,7 +172,7 @@ exports.updateOne = (req, res, next) => {
                         }
                     })
                 }
-
+                console.log(projet)
                 if (req.files) {
                     await req.files.forEach(async (file) => {
                         project.images.push(file.filename);
