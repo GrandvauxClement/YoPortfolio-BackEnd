@@ -175,6 +175,7 @@ exports.updateOne = (req, res, next) => {
                 console.log(projet)
                 if (req.files) {
                     await req.files.forEach(async (file) => {
+                        console.log("Super test dans mon for qui plante ", project);
                         project.images.push(file.filename);
                         await uploadFile(file);
                     });
