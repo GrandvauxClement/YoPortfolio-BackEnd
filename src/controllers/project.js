@@ -156,8 +156,6 @@ exports.updateOne = (req, res, next) => {
     if (typeof project.images === "undefined"){
         project.images = [];
     }
-    console.log("Mes images received --> ", project.images)
-
     Project
         .findOne({_id: idProject})
         .exec()
@@ -173,10 +171,8 @@ exports.updateOne = (req, res, next) => {
                         }
                     })
                 }
-                console.log(project)
                 if (req.files) {
                     await req.files.forEach(async (file) => {
-                        console.log("Super test dans mon for qui plante ", project);
                         project.images.push(file.filename);
                         await uploadFile(file);
                     });
